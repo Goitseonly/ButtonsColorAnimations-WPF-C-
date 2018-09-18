@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GraphicalUse"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Animation" Height="300" Width="300">
+    <Canvas>
+        <Button Content="Button1" Width="150" Height="80"
+Canvas.Left="50" Canvas.Top="20">
+            <Button.Background>
+                <SolidColorBrush x:Name="brush1"/>
+            </Button.Background>
+        </Button>
+        <Button Content="Button2" Width="150" Height="80"
+Canvas.Left="50" Canvas.Top="110">
+            <Button.Background>
+                <SolidColorBrush x:Name="brush2"/>
+            </Button.Background>
+        </Button>
+    </Canvas>
+<!--Pause@ page 240 {Animation and Timing Behavior}-->
 </Window>

@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,6 +24,51 @@ namespace GraphicalUse
         public MainWindow()
         {
             InitializeComponent();
+
+            Storyboard sb = new Storyboard();
+            ColorAnimation ca1 =
+            new ColorAnimation(
+            Colors.Blue, Colors.Yellow,
+            new Duration(new TimeSpan(0, 0, 10)));
+            ca1.RepeatBehavior = RepeatBehavior.Forever;
+            ca1.AutoReverse = true;
+            Storyboard.SetTargetName(ca1, "brush1");
+            Storyboard.SetTargetProperty(ca1,
+            new PropertyPath(SolidColorBrush.ColorProperty));
+            ColorAnimation ca2 =
+            new ColorAnimation(Colors.Red, Colors.Green,
+            new Duration(new TimeSpan(0, 0, 10)));
+            ca2.RepeatBehavior = RepeatBehavior.Forever;
+            ca2.AutoReverse = true;
+            ca2.BeginTime = new TimeSpan(0, 0, 5);
+            Storyboard.SetTargetName(ca2, "brush2");
+            Storyboard.SetTargetProperty(ca2,
+            new PropertyPath(
+            SolidColorBrush.ColorProperty));
+            sb.Children.Add(ca1);
+            sb.Children.Add(ca2);
+            sb.Begin(this);
         }
+
+        //private void OnTextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    textBlock.Text = textBox.Text;
+        //}
+
+        //private void btnChangeColor_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (textBlock.Foreground == Brushes.Black)
+        //        textBlock.Foreground = Brushes.Red;
+        //    else
+        //        textBlock.Foreground = Brushes.Black;
+        //}
+
+        //private void btnChangeSize_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (textBlock.FontSize == 11)
+        //        textBlock.FontSize = 24;
+        //    else
+        //        textBlock.FontSize = 11;
+        //}
     }
 }
